@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarpQuest · Carp Disease Explorer</title>
+<meta name="description" content="An interactive, gamified companion to the research proposal 'Investigation and Molecular Characterization of Diseases Affecting Cultured Carps in Bangladesh'.">
+<meta property="og:title" content="CarpQuest · Carp Disease Explorer">
+<meta property="og:description" content="Learn carp diseases, lab diagnostics, PCR, AMR and more through games, flashcards, quizzes and a knowledge graph.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== HUD ===== -->
+<header class="hud" id="hud">
+  <a class="brand" href="#home" aria-label="CarpQuest home"><span class="brand-fish">🐟</span><span>Carp<b>Quest</b></span></a>
+  <div class="hud-level" title="Your level">
+    <span class="lvl-emoji" id="lvlEmoji">🥚</span>
+    <div class="lvl-text"><span id="lvlName">Fish Egg</span><div class="xpbar"><i id="xpFill"></i></div></div>
+    <span class="xp-num"><b id="xpNum">0</b> XP</span>
+  </div>
+  <div class="hud-actions">
+    <button class="icon-btn" id="badgeBtn" aria-label="Achievements"><span>🏅</span><b id="badgeCount">0</b></button>
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+    <button class="icon-btn" id="menuBtn" aria-label="Open quest map">☰</button>
+  </div>
+</header>
+
+<nav class="drawer" id="drawer" aria-label="Sections">
+  <div class="drawer-head"><h3>Quest map</h3><button class="icon-btn" id="drawerClose" aria-label="Close">✕</button></div>
+  <ol id="drawerList"></ol>
+  <button class="link-btn" id="resetBtn">Reset my progress</button>
+</nav>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- ===== HERO (slide 1) ===== -->
+<section class="hero" id="home" data-section="home">
+  <div class="bubbles" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Bangladesh Fisheries Research Institute · Mymensingh</p>
+      <h1>Investigation &amp; Molecular Characterization of Diseases Affecting <em>Cultured Carps</em> in Bangladesh</h1>
+      <p class="lede">A playable guide to this research proposal. Go through the 10 slides one quest at a time and pick up the background knowledge (fish biology, microbiology, PCR, antibiotic resistance) you need to really understand them.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#carps">Start the expedition →</a>
+        <a class="btn ghost" href="#graph">Jump to the knowledge graph</a>
+      </div>
+      <ul class="hero-how">
+        <li><b>+XP</b> for every section, game and right answer</li>
+        <li><b>19 badges</b> to unlock</li>
+        <li><b>Saved</b> on this device</li>
+      </ul>
+    </div>
+    <figure class="hero-fig">
+      <img src="assets/img/hemorrhagic-head.jpg" alt="A carp on a dissection tray with a severely haemorrhagic, red head" loading="eager">
+      <figcaption>A diseased carp with a haemorrhagic head. What caused it? Let's find out.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <h2 class="mini-h">Your quest map: the deck, slide by slide</h2>
+    <div class="map" id="questMap"></div>
+  </div>
+</section>
+
+<!-- ===== CARPS ===== -->
+<section id="carps" data-section="carps" class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Background to slide 1</span><h2>Meet the carps</h2>
+      <p>Before learning about the diseases, meet the patients. Bangladeshi ponds are usually stocked with a <b>polyculture</b> of native Indian major carps (IMCs) and exotic Chinese carps.</p></header>
+
+    <div class="stats" id="bdStats"></div>
+    <p class="fine">Approximate figures from the Department of Fisheries (DoF) yearbooks. Check the <a href="https://fisheries.gov.bd/" target="_blank" rel="noopener">latest edition</a> for current numbers.</p>
+
+    <div class="card-grid carps" id="carpGrid"></div>
+
+    <div class="game" id="pondGame">
+      <div class="game-head"><span class="gtag">Mini-game · +60 XP</span><h3>Pond Architect</h3>
+        <p>Polyculture works because each species feeds in a different layer. <b>Pick a fish, then tap the layer where it feeds.</b></p></div>
+      <div class="pond-wrap">
+        <div class="pond-tray" id="pondTray"></div>
+        <div class="pond" id="pond">
+          <div class="layer" data-zone="surface"><span>Surface · plankton</span><div class="slot"></div></div>
+          <div class="layer" data-zone="column"><span>Column · plants &amp; plankton</span><div class="slot"></div></div>
+          <div class="layer" data-zone="bottom"><span>Bottom · detritus</span><div class="slot"></div></div>
+        </div>
+      </div>
+      <p class="feedback" id="pondFb" aria-live="polite"></p>
+    </div>
+
+    <div class="video-row" data-videos="carpFarming,mixedFarm"></div>
+  </div>
+</section>
+
+<!-- ===== JUSTIFICATION (slide 2) ===== -->
+<section id="why" data-section="why" class="sec alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Slide 2</span><h2>Why does this research matter?</h2>
+      <p>The slide gives four justifications. Open each one to see the reasoning behind it.</p></header>
+    <div class="pillars" id="pillars"></div>
+    <div class="pillar-detail" id="pillarDetail" aria-live="polite"></div>
+
+    <div class="two">
+      <div class="game">
+        <div class="game-head"><span class="gtag">Widget · +20 XP</span><h3>Outbreak loss calculator</h3>
+          <p>How much does one outbreak cost a single farmer? Move the sliders. <span class="fine">(Illustrative, simplified economics.)</span></p></div>
+        <div class="calc" id="calc"></div>
+      </div>
+      <div class="game">
+        <div class="game-head"><span class="gtag">Concept</span><h3>The One Health loop</h3>
+          <p>Antibiotics used in a pond don't stay in the pond. Tap each arrow.</p></div>
+        <div id="oneHealth"></div>
+      </div>
+    </div>
+    <div class="video-row" data-videos="amr"></div>
+  </div>
+</section>
+
+<!-- ===== OBJECTIVES + OUTPUTS (slides 3–4) ===== -->
+<section id="objectives" data-section="objectives" class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Slides 3 &amp; 4</span><h2>Objectives → Methods → Outputs</h2>
+      <p>Each objective is a question, each method answers it, and each output is the result. <b>Tap an objective</b> to see how it connects to the rest.</p></header>
+    <div class="trace" id="trace">
+      <div class="trace-col"><h4>Objectives</h4><div id="traceObj"></div></div>
+      <div class="trace-col"><h4>Methods (Activity 2)</h4><div id="traceMeth"></div></div>
+      <div class="trace-col"><h4>Expected outputs</h4><div id="traceOut"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DISEASE ATLAS ===== -->
+<section id="atlas" data-section="atlas" class="sec alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Background knowledge</span><h2>Disease atlas</h2>
+      <p>Objective i asks about the <i>clinical</i> characteristics of disease. Learn to read a sick fish: <b>tap each glowing region</b>.</p></header>
+
+    <div class="inspect">
+      <div class="fish-stage" id="fishStage"></div>
+      <div class="inspect-panel" id="inspectPanel"><p class="muted">Tap a glowing circle on the fish to start the inspection.</p></div>
+    </div>
+
+    <div class="photo-strip">
+      <figure><img src="assets/img/bighead-head.jpg" alt="Close-up of a carp head with haemorrhages around the eye and operculum" loading="lazy"><figcaption>Haemorrhage around the eye, mouth and gill cover</figcaption></figure>
+      <figure><img src="assets/img/silver-carp-hemorrhage.jpg" alt="Silver carp with scattered red haemorrhagic spots on the flank and tail" loading="lazy"><figcaption>Petechial haemorrhages along the flank: septicaemia</figcaption></figure>
+      <figure><img src="assets/img/mass-mortality.jpg" alt="Pile of dead carp on a pond bank" loading="lazy"><figcaption>The result: mass mortality</figcaption></figure>
+    </div>
+
+    <div class="filter-row" id="diseaseFilter"></div>
+    <div class="card-grid" id="diseaseGrid"></div>
+
+    <div class="game" id="caseGame">
+      <div class="game-head"><span class="gtag">Mini-game · +30 XP per case</span><h3>Fish Doctor: diagnose the case</h3>
+        <p>Read the farm report and pick the most likely disease.</p></div>
+      <div id="caseBox"></div>
+    </div>
+    <div class="video-row" data-videos="aeromonas,eus"></div>
+  </div>
+</section>
+
+<!-- ===== SURVEY (slides 5–7) ===== -->
+<section id="survey" data-section="survey" class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Slides 5, 6 &amp; 7</span><h2>Activity 1: What do farmers know?</h2>
+      <p>Before looking down a microscope, the team asks the people who see the fish every day. Step through the six-stage methodology.</p></header>
+    <div class="stepper" id="stepper"></div>
+
+    <h3 class="sub-h">The PRA toolbox</h3>
+    <div class="card-grid tools" id="praGrid"></div>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Mini-game · +10 XP each</span><h3>Questionnaire clinic</h3>
+        <p>A badly worded question gives bad data. Is each question <b>good</b>, or does it <b>need fixing</b>?</p></div>
+      <div id="qGame"></div>
+    </div>
+    <div class="video-row" data-videos="pra"></div>
+  </div>
+</section>
+
+<!-- ===== LAB PIPELINE (slide 8) ===== -->
+<section id="lab" data-section="lab" class="sec alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Slide 8</span><h2>Activity 2: From sick fish to named pathogen</h2>
+      <p>The slide's flowchart, made interactive. <b>Open every step</b> to earn the Pipeline Pro badge. Colours show the lane: <span class="lane-key field">Field</span> <span class="lane-key culture">Culture</span> <span class="lane-key mol">Molecular</span></p></header>
+    <div class="pipe-wrap"><div id="pipeline"></div></div>
+    <div class="pipe-detail" id="pipeDetail" aria-live="polite"><p class="muted">Select a step in the flowchart.</p></div>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Simulator</span><h3>Selective media explorer</h3><p>Which agar would you streak for which suspect?</p></div>
+      <div class="media" id="mediaSim"></div>
+    </div>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Mini-game · up to +40 XP</span><h3>Mystery isolate</h3>
+        <p>You have a pure colony. Run as <b>few tests as possible</b>, then name the organism. Fewer tests mean more XP. <span class="fine">(Simplified teaching profiles.)</span></p></div>
+      <div id="bioGame"></div>
+    </div>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Mini-game · +50 XP</span><h3>Read the antibiotic plate</h3>
+        <p>Measure each zone against the breakpoints and classify it: <b>S</b>usceptible, <b>I</b>ntermediate or <b>R</b>esistant. Then work out the MAR index. <span class="fine">(Illustrative breakpoints. Real work uses current CLSI tables.)</span></p></div>
+      <div id="astGame"></div>
+    </div>
+
+    <div class="two">
+      <div class="game">
+        <div class="game-head"><span class="gtag">Concept</span><h3>Koch's postulates: the challenge test</h3></div>
+        <ol class="koch" id="koch"></ol>
+      </div>
+      <div class="game">
+        <div class="game-head"><span class="gtag">Concept</span><h3>Histopathology: the slide factory</h3></div>
+        <div id="histo"></div>
+      </div>
+    </div>
+    <div class="video-row" data-videos="imvic,kirby,kirbyRead,koch"></div>
+  </div>
+</section>
+
+<!-- ===== MOLECULAR ===== -->
+<section id="molecular" data-section="molecular" class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Slide 8 · molecular branch</span><h2>The molecular lab</h2>
+      <p>qPCR, PCR, 16S sequencing and phylogenetics answer Objectives ii, iii and iv. Play with each technique.</p></header>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Simulator · +40 XP</span><h3>qPCR: watch DNA double</h3>
+        <p>Every cycle doubles the target. Move the <b>starting copies</b> slider and watch the curve shift. Then read the Ct.</p></div>
+      <div id="qpcrSim"></div>
+    </div>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Mini-game · +50 XP</span><h3>Virulence gel</h3>
+        <p>Conventional PCR for a virulence gene, run on a gel. Pick a gene, then <b>tap the isolates</b> that carry it (a band at the right size). <span class="fine">(Amplicon sizes are illustrative and depend on the primer set.)</span></p></div>
+      <div id="gelGame"></div>
+    </div>
+
+    <div class="two">
+      <div class="game">
+        <div class="game-head"><span class="gtag">Widget</span><h3>16S rRNA: what does % identity mean?</h3></div>
+        <div id="blast"></div>
+      </div>
+      <div class="game">
+        <div class="game-head"><span class="gtag">Toolkit</span><h3>Virulence arsenal</h3><p>The genes Objective iv screens for. Tap one to learn what it does.</p></div>
+        <div id="arsenal"></div>
+      </div>
+    </div>
+
+    <div class="game">
+      <div class="game-head"><span class="gtag">Puzzle · +40 XP</span><h3>Read the tree</h3>
+        <p>A <i>hypothetical</i> 16S tree of local isolates and reference strains. Numbers are bootstrap support (%). Tap a tip to highlight its lineage.</p></div>
+      <div id="tree"></div>
+    </div>
+    <div class="video-row" data-videos="pcr,qpcr,qpcr1min,gel,s16,phyloCDC,phyloStart"></div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE (slide 9) ===== -->
+<section id="timeline" data-section="timeline" class="sec alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Slide 9</span><h2>Work schedule, Jul 2026 – Jun 2027</h2>
+      <p>Twelve months, five overlapping activities. <b>Drag the month slider</b> to see what the team is doing each month.</p></header>
+    <div class="game">
+      <div id="gantt"></div>
+      <label class="scrub"><span>Month: <b id="monthLabel">Jul 2026</b></span><input type="range" min="0" max="11" value="0" id="monthRange"></label>
+      <div class="now" id="nowBox" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GRAPH ===== -->
+<section id="graph" data-section="graph" class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">All slides, connected</span><h2>Knowledge graph</h2>
+      <p>Every concept in this guide and how they link. Drag nodes, scroll to zoom, <b>click a node</b> to see its connections. Explore 15 nodes for a badge.</p></header>
+    <div class="graph-tools">
+      <input type="search" id="graphSearch" placeholder="Search a concept… (e.g. aerA, EUS)" aria-label="Search graph">
+      <div class="legend" id="graphLegend"></div>
+    </div>
+    <div class="graph-box">
+      <svg id="graphSvg" role="img" aria-label="Knowledge graph of carp disease concepts"></svg>
+      <aside class="graph-info" id="graphInfo"><p class="muted">Click any node.</p></aside>
+    </div>
+    <p class="fine"><span id="graphCount">0</span> / 15 nodes explored</p>
+  </div>
+</section>
+
+<!-- ===== FLASHCARDS ===== -->
+<section id="flashcards" data-section="flashcards" class="sec alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Memory training</span><h2>Flashcards</h2>
+      <p>Tap the card (or press space) to flip it. Mark <b>Got it</b> or <b>Again</b>. Cards you miss come back sooner (Leitner boxes).</p></header>
+    <div class="filter-row" id="deckFilter"></div>
+    <div class="flash-area">
+      <div class="flash" id="flash" tabindex="0" role="button" aria-label="Flashcard. Press to flip">
+        <div class="flash-inner"><div class="face front" id="flashFront"></div><div class="face back" id="flashBack"></div></div>
+      </div>
+      <div class="flash-ctrl">
+        <button class="btn bad" id="flashAgain">↺ Again</button>
+        <button class="btn good" id="flashGot">✓ Got it</button>
+      </div>
+      <div class="flash-meta" id="flashMeta"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section id="quiz" data-section="quiz" class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Test yourself</span><h2>Quiz arena</h2>
+      <p>Pick a topic round (score 80% for the Quiz Ace badge), or face the <b>Boss Battle</b>: 15 random questions, 3 lives.</p></header>
+    <div class="quiz-pick" id="quizPick"></div>
+    <div class="quiz-box" id="quizBox"></div>
+  </div>
+</section>
+
+<!-- ===== LIBRARY ===== -->
+<section id="library" data-section="library" class="sec alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="chip">Go deeper</span><h2>Library: videos, articles &amp; glossary</h2></header>
+    <div class="filter-row" id="libFilter"></div>
+    <h3 class="sub-h">Videos</h3>
+    <div class="video-grid" id="videoGrid"></div>
+    <h3 class="sub-h">Reference articles</h3>
+    <ul class="refs" id="refList"></ul>
+    <h3 class="sub-h">Glossary</h3>
+    <dl class="gloss" id="gloss"></dl>
+
+    <div class="cert" id="cert"></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>CarpQuest is an unofficial study companion built from the research proposal deck <i>“Investigation and Molecular Characterization of Diseases Affecting Cultured Carps in Bangladesh”</i>. Figures marked illustrative are for learning, not diagnosis.</p>
+  </div>
+</footer>
+
+<!-- overlays -->
+<div class="modal" id="badgeModal" role="dialog" aria-modal="true" aria-labelledby="badgeTitle">
+  <div class="modal-card"><div class="modal-head"><h3 id="badgeTitle">Achievements</h3><button class="icon-btn" data-close aria-label="Close">✕</button></div>
+  <div class="badge-grid" id="badgeGrid"></div></div>
+</div>
+<div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal-card wide"><div class="modal-head"><h3 id="videoTitle"></h3><button class="icon-btn" data-close aria-label="Close">✕</button></div>
+  <div class="video-frame" id="videoFrame"></div></div>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/lab.js"></script>
+<script src="js/learn.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
