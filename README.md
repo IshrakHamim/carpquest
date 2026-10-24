@@ -31,6 +31,7 @@ An interactive, gamified study companion for the research proposal
 - **Previous:** ← ↑ PageUp, right click, scroll up, swipe right
 - **Jump:** Home / End, number keys 1–9 (0 = slide 10), or the dots in the control bar
 - **Full screen:** F or the ⛶ button
+- **Download:** the ⬇ button (or D) offers `downloads/carp-disease-presentation.pdf` and `.pptx`. They are rendered from the web slides, so rebuild them after editing `presentation.html`: `pip install python-pptx pillow && python3 tools/build_downloads.py` (needs Google Chrome).
 - Each slide has its own URL (`presentation.html#5`). To add researcher names to the cover, fill in the `<ul>` under "Researcher(s)" in `presentation.html`.
 
 Gamification: XP, 7 levels (Fish Egg → Master Pathologist), 19 badges, confetti, and progress saved in the browser (`localStorage`).

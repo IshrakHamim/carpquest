@@ -223,8 +223,15 @@
   <div class="dots" id="dots"></div>
   <button class="cb" id="nextBtn" title="Next (→)" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
   <button class="cb" id="fsBtn" title="Full screen (F)" aria-label="Toggle full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+  <div class="dl">
+    <button class="cb" id="dlBtn" title="Download (D)" aria-label="Download the presentation" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg></button>
+    <div class="dl-menu" id="dlMenu" role="menu">
+      <a role="menuitem" href="downloads/carp-disease-presentation.pdf" download><b>PDF</b><span>Best for sharing &amp; printing</span></a>
+      <a role="menuitem" href="downloads/carp-disease-presentation.pptx" download><b>PowerPoint (.pptx)</b><span>PowerPoint, Keynote or Google Slides</span></a>
+    </div>
+  </div>
 </nav>
-<div class="hint" id="hint">Use <kbd>←</kbd> <kbd>→</kbd>, click, scroll or swipe · <kbd>F</kbd> full screen</div>
+<div class="hint" id="hint">Use <kbd>←</kbd> <kbd>→</kbd>, click, scroll or swipe · <kbd>F</kbd> full screen · <kbd>D</kbd> download</div>
 
 <script src="js/present.js"></script>
 </body>

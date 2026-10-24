@@ -147,14 +147,24 @@
   };
   $("#fsBtn").onclick = fullscreen;
 
+  /* download menu (PDF / PPTX built by tools/build_downloads.py) */
+  const dl = $(".dl"), dlBtn = $("#dlBtn");
+  const toggleDl = open => { dl.classList.toggle("open", open); dlBtn.setAttribute("aria-expanded", open); };
+  dlBtn.onclick = () => toggleDl(!dl.classList.contains("open"));
+  $$("#dlMenu a").forEach(a => a.addEventListener("click", () => toggleDl(false)));
+  document.addEventListener("click", e => { if (!e.target.closest(".dl")) toggleDl(false); });
+
   document.addEventListener("keydown", e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
-    if (["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"].includes(k)) { if (k === "Enter" && e.target.closest("a,button")) return; e.preventDefault(); next(); }
+    if (k === "Escape") { toggleDl(false); return; }
+    if ((k === " " || k === "Enter") && e.target.closest("a,button")) return;
+    if (["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"].includes(k)) { e.preventDefault(); next(); }
     else if (["ArrowLeft", "ArrowUp", "PageUp", "Backspace"].includes(k)) { e.preventDefault(); prev(); }
     else if (k === "Home") go(0);
     else if (k === "End") go(N - 1);
     else if (k === "f" || k === "F") fullscreen();
+    else if (k === "d" || k === "D") { toggleDl(!dl.classList.contains("open")); if (dl.classList.contains("open")) $("#dlMenu a").focus(); }
     else if (/^[0-9]$/.test(k)) go(k === "0" ? 9 : +k - 1);
     wake();
   });
@@ -191,6 +201,8 @@
   addEventListener("mousemove", wake);
   addEventListener("touchstart", wake, { passive: true });
   setTimeout(() => $("#hint").classList.add("hide"), 4500);
+
+  if (new URLSearchParams(location.search).has("capture")) document.body.classList.add("capture");
 
   const start = parseInt(location.hash.slice(1), 10);
   go(Number.isFinite(start) ? start - 1 : 0);

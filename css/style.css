@@ -126,6 +126,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .present-btn b { font-weight: 600; }
 .present-btn:hover { background: var(--primary-2); }
 .drawer-present { display: block; margin-top: 14px; text-align: center; text-decoration: none; }
+.drawer-dl { margin: 8px 0 0; text-align: center; font-size: .85rem; color: var(--muted); }
 @media (max-width: 560px) { .brand span:last-child { display: none; } .xp-num { display: none; } .present-btn b { display: none; } .hud { gap: 8px; } }
 .hud.pulse .xpbar i { box-shadow: 0 0 12px var(--gold); }
 
