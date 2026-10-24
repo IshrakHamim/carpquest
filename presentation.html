@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentation · Carp Disease Research</title>
+<meta name="description" content="Slide presentation: Investigation and Molecular Characterization of Diseases Affecting Cultured Carps in Bangladesh (BFRI, Mymensingh).">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/present.css">
+</head>
+<body>
+
+<div class="viewport" id="viewport">
+<div class="stage" id="stage" aria-roledescription="presentation">
+
+  <!-- ===== Microbiology background (shared by every slide) ===== -->
+  <div class="bg" aria-hidden="true">
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <symbol id="m-rod" viewBox="0 0 120 60"><rect x="18" y="14" width="70" height="32" rx="16" fill="currentColor"/><rect x="28" y="22" width="50" height="16" rx="8" fill="#fff" opacity=".35"/><path d="M88 30c8-10 14 10 22 0s10-8 10-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M18 30c-6 8-10-6-16 2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+        <symbol id="m-cocci" viewBox="0 0 100 100"><g fill="currentColor"><circle cx="34" cy="36" r="15"/><circle cx="62" cy="30" r="13"/><circle cx="56" cy="60" r="16"/><circle cx="28" cy="66" r="11"/><circle cx="80" cy="56" r="10"/></g><g fill="#fff" opacity=".35"><circle cx="30" cy="31" r="5"/><circle cx="58" cy="26" r="4"/><circle cx="51" cy="55" r="5"/></g></symbol>
+        <symbol id="m-chain" viewBox="0 0 140 40"><g fill="currentColor"><circle cx="14" cy="20" r="11"/><circle cx="37" cy="20" r="11"/><circle cx="60" cy="20" r="11"/><circle cx="83" cy="20" r="11"/><circle cx="106" cy="20" r="11"/><circle cx="127" cy="20" r="9"/></g></symbol>
+        <symbol id="m-spiral" viewBox="0 0 140 40"><path d="M6 20c10-18 20-18 30 0s20 18 30 0 20-18 30 0 20 18 30 0" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></symbol>
+        <symbol id="m-phage" viewBox="0 0 60 110"><path d="M30 4l18 10v20L30 44 12 34V14z" fill="currentColor"/><rect x="26" y="44" width="8" height="34" rx="3" fill="currentColor"/><path d="M30 78L12 100M30 78l18 22M30 78v26M30 78l-26 12M30 78l26 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/></symbol>
+        <symbol id="m-virus" viewBox="0 0 100 100"><circle cx="50" cy="50" r="24" fill="currentColor"/><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M50 10v14M50 76v14M10 50h14M76 50h14M22 22l10 10M68 68l10 10M78 22L68 32M32 68L22 78"/></g><g fill="currentColor"><circle cx="50" cy="8" r="5"/><circle cx="50" cy="92" r="5"/><circle cx="8" cy="50" r="5"/><circle cx="92" cy="50" r="5"/><circle cx="20" cy="20" r="5"/><circle cx="80" cy="80" r="5"/><circle cx="80" cy="20" r="5"/><circle cx="20" cy="80" r="5"/></g><g fill="#fff" opacity=".35"><circle cx="42" cy="44" r="6"/><circle cx="58" cy="58" r="4"/></g></symbol>
+        <symbol id="m-dna" viewBox="0 0 60 200"><path d="M10 0c0 25 40 25 40 50s-40 25-40 50 40 25 40 50-40 25-40 50" fill="none" stroke="currentColor" stroke-width="5"/><path d="M50 0c0 25-40 25-40 50s40 25 40 50-40 25-40 50 40 25 40 50" fill="none" stroke="currentColor" stroke-width="5" opacity=".6"/><g stroke="currentColor" stroke-width="3" opacity=".7"><path d="M16 12h28M24 25h12M16 38h28M16 62h28M24 75h12M16 88h28M16 112h28M24 125h12M16 138h28M16 162h28M24 175h12M16 188h28"/></g></symbol>
+        <symbol id="m-petri" viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="60" cy="60" r="46" fill="currentColor" opacity=".25"/><g fill="currentColor"><circle cx="40" cy="44" r="6"/><circle cx="72" cy="38" r="4"/><circle cx="80" cy="66" r="7"/><circle cx="52" cy="78" r="5"/><circle cx="34" cy="68" r="3"/><circle cx="62" cy="58" r="3"/><circle cx="88" cy="48" r="3"/></g></symbol>
+        <symbol id="m-cell" viewBox="0 0 120 100"><path d="M20 50c-6-26 22-44 48-40s46 22 42 44-24 40-52 38S26 76 20 50z" fill="currentColor"/><circle cx="66" cy="48" r="15" fill="#fff" opacity=".4"/><circle cx="66" cy="48" r="7" fill="currentColor"/><g fill="#fff" opacity=".35"><circle cx="38" cy="38" r="4"/><circle cx="44" cy="66" r="3"/><circle cx="90" cy="64" r="3"/></g></symbol>
+      </defs>
+    </svg>
+    <div class="bg-blob b1"></div><div class="bg-blob b2"></div><div class="bg-blob b3"></div>
+    <div class="bg-dots"></div>
+    <div class="bg-microbes" id="microbes"></div>
+  </div>
+
+  <!-- ===== Persistent title (same on every content slide) ===== -->
+  <header class="ptitle">
+    <img src="assets/img/present/bfri-logo.png" alt="Bangladesh Fisheries Research Institute logo">
+    <div class="ptitle-text">
+      <b>Investigation and Molecular Characterization of Diseases Affecting Cultured Carps in Bangladesh</b>
+      <span>Bangladesh Fisheries Research Institute · Mymensingh-2201</span>
+    </div>
+  </header>
+
+  <!-- ===== 1 · Cover ===== -->
+  <section class="slide cover" data-title="Title">
+    <div class="cover-left">
+      <div class="inst a" style="--i:0">
+        <img src="assets/img/present/bfri-logo.png" alt="">
+        <div><b>Bangladesh Fisheries Research Institute</b><span>Mymensingh-2201</span></div>
+      </div>
+      <span class="tag a" style="--i:1">Research Proposal</span>
+      <h1 class="a" style="--i:2">Investigation and Molecular Characterization of Diseases Affecting <em>Cultured Carps</em> in Bangladesh</h1>
+      <div class="rule a" style="--i:3"></div>
+      <div class="researchers a" style="--i:4" id="researchers">
+        <span>Researcher(s)</span>
+        <ul>
+          <!-- Add one <li> per researcher, e.g. <li>Dr. Name Surname<small>Senior Scientific Officer</small></li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="ring a zoom" style="--i:1"></div>
+      <figure class="ph ph-main a zoom" style="--i:2"><img src="assets/img/hemorrhagic-head.jpg" alt="Carp with a haemorrhagic red head on a dissection tray"></figure>
+      <figure class="ph ph-sub a right" style="--i:4"><img src="assets/img/bighead-head.jpg" alt="Close-up of a carp head with haemorrhages"></figure>
+      <div class="cover-chip a pop" style="--i:5"><i></i>Fish health · Microbiology · Molecular diagnostics</div>
+    </div>
+  </section>
+
+  <!-- ===== 2 · Justification ===== -->
+  <section class="slide" data-title="Justification">
+    <div class="sh"><span class="kick a" style="--i:0">Why this study</span><h2 class="a" style="--i:1">Justification</h2></div>
+    <div class="just-grid">
+      <article class="jcard c1 a" style="--i:2">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6l6 6 4-4 8 8"/><path d="M15 16h6v-6"/></svg></span>
+        <span class="num">01</span>
+        <h3>High economic losses and threat to food security</h3>
+        <p>Outbreaks can kill fish overnight, and carps feed millions.</p>
+      </article>
+      <article class="jcard c2 a" style="--i:3">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M6 18h8M3 22h18M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></span>
+        <span class="num">02</span>
+        <h3>Limitations of conventional diagnostic infrastructure</h3>
+        <p>Visible signs and culture plates can't tell look-alike pathogens apart.</p>
+      </article>
+      <article class="jcard c3 a" style="--i:4">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span class="num">03</span>
+        <h3>Mitigating AMR in aquatic ecosystems</h3>
+        <p>Treating without a confirmed diagnosis breeds resistant bacteria.</p>
+      </article>
+      <article class="jcard c4 a" style="--i:5">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l8 5H4z"/></svg></span>
+        <span class="num">04</span>
+        <h3>Policy alignment and capacity building</h3>
+        <p>Evidence that supports national AMR, fisheries and SDG goals.</p>
+      </article>
+    </div>
+    <div class="just-photos">
+      <figure class="ph p-wide a right" style="--i:3"><img src="assets/img/mass-mortality.jpg" alt="Pile of dead carp on a pond bank"><figcaption>Mass mortality on a pond bank</figcaption></figure>
+      <figure class="ph p-round a pop" style="--i:6"><img src="assets/img/present/ast-zones.jpg" alt="Antibiotic susceptibility plate with inhibition zones"></figure>
+    </div>
+  </section>
+
+  <!-- ===== 3 · Objectives ===== -->
+  <section class="slide" data-title="Objectives">
+    <div class="sh"><span class="kick a" style="--i:0">What we aim to do</span><h2 class="a" style="--i:1">Objectives</h2></div>
+    <ol class="obj-list">
+      <li class="a left" style="--i:2"><span class="ob">Obj. i</span><p>To investigate the clinical and pathological characteristics of diseases affecting cultured carps</p></li>
+      <li class="a left" style="--i:3"><span class="ob">Obj. ii</span><p>To isolate and identify the major pathogens associated with diseased carps</p></li>
+      <li class="a left" style="--i:4"><span class="ob">Obj. iii</span><p>To determine the molecular diversity and genetic characteristics of the identified pathogens</p></li>
+      <li class="a left" style="--i:5"><span class="ob">Obj. iv</span><p>To analyze the virulence-associated genes of major bacterial pathogens affecting cultured carps</p></li>
+    </ol>
+    <div class="obj-photos">
+      <figure class="ph p-a a zoom" style="--i:3"><img src="assets/img/silver-carp-hemorrhage.jpg" alt="Silver carp with haemorrhagic spots on the flank"></figure>
+      <figure class="ph p-b a right" style="--i:5"><img src="assets/img/culture-plate.jpg" alt="Gloved hand holding a bacterial culture plate"></figure>
+    </div>
+  </section>
+
+  <!-- ===== 4 · Expected output ===== -->
+  <section class="slide" data-title="Expected Output">
+    <div class="sh"><span class="kick a" style="--i:0">Deliverables</span><h2 class="a" style="--i:1">Expected Output</h2></div>
+    <div class="out-track">
+      <div class="out-line"></div>
+      <article class="ocard a pop" style="--i:2"><span class="oi o1"><svg viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></svg></span><span class="num">01</span><p>Clinical and pathological profiles of major carp diseases</p></article>
+      <article class="ocard a pop" style="--i:3"><span class="oi o2"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7 15h10"/></svg></span><span class="num">02</span><p>Isolation and identification of major carp pathogens</p></article>
+      <article class="ocard a pop" style="--i:4"><span class="oi o3"><svg viewBox="0 0 24 24"><path d="M7 2c0 5 10 5 10 10s-10 5-10 10"/><path d="M17 2c0 5-10 5-10 10s10 5 10 10"/><path d="M9 5h6M9 19h6M10.5 8.5h3M10.5 15.5h3"/></svg></span><span class="num">03</span><p>Molecular characterization, genetic diversity and virulence gene profiles of major bacterial pathogens</p></article>
+      <article class="ocard a pop" style="--i:5"><span class="oi o4"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="num">04</span><p>Baseline molecular database of carp pathogens in Bangladesh</p></article>
+      <article class="ocard a pop" style="--i:6"><span class="oi o5"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span><span class="num">05</span><p>Evidence-based strategies for disease diagnosis, surveillance and control</p></article>
+    </div>
+  </section>
+
+  <!-- ===== 5 · Activity 1 flow ===== -->
+  <section class="slide" data-title="Activity 1">
+    <div class="sh"><span class="kick a" style="--i:0">Activity 1</span><h2 class="a sm" style="--i:1">A comprehensive survey to assess farmers’ knowledge of diseases of carps</h2></div>
+    <div class="flow" data-flow="survey"></div>
+  </section>
+
+  <!-- ===== 6 · Activity 1 steps ===== -->
+  <section class="slide" data-title="Survey Steps">
+    <div class="sh"><span class="kick a" style="--i:0">Activity 1</span><h2 class="a sm" style="--i:1">Survey of Farmers’ Knowledge of Carp Diseases</h2></div>
+    <div class="steps">
+      <article class="step a" style="--i:2"><img src="assets/img/present/icon-1.png" alt=""><span class="num">01</span><h3>Selection of Study Area</h3><p>Identify freshwater aquaculture regions and carp-farming communities.</p></article>
+      <article class="step a" style="--i:3"><img src="assets/img/present/icon-2.png" alt=""><span class="num">02</span><h3>Data Collection Sources</h3><p><b>Primary data:</b> farmers<br><b>Secondary data:</b> reports, booklets and internet materials.</p></article>
+      <article class="step a" style="--i:4"><img src="assets/img/present/icon-3.png" alt=""><span class="num">03</span><h3>Questionnaire Survey</h3><p>Collect farmers’ knowledge and experiences of carp diseases.</p></article>
+      <article class="step a" style="--i:5"><img src="assets/img/present/icon-4.png" alt=""><span class="num">04</span><h3>Participatory Rural Appraisal</h3><p>Use PRA tools to document community knowledge and disease concerns.</p></article>
+      <article class="step a" style="--i:6"><img src="assets/img/present/icon-5.png" alt=""><span class="num">05</span><h3>Data Management</h3><p>Organize, check and compile the collected survey information.</p></article>
+      <article class="step a" style="--i:7"><img src="assets/img/present/icon-6.png" alt=""><span class="num">06</span><h3>Data Analysis</h3><p>Analyze survey findings to assess farmers’ knowledge of carp diseases.</p></article>
+    </div>
+  </section>
+
+  <!-- ===== 7 · Pictorial survey ===== -->
+  <section class="slide" data-title="Survey Pictorial">
+    <div class="sh"><span class="kick a" style="--i:0">Activity 1 · Pictorial view of the survey methodology · Follow steps 1–6</span><h2 class="a sm" style="--i:1">Survey of Farmers’ Knowledge of Carp Diseases</h2></div>
+    <div class="pics">
+      <figure class="pic a zoom" style="--i:2"><img src="assets/img/present/survey-1.png" alt="Map with a location pin"><span class="badge">1</span><figcaption><b>Selection of Study Area</b>Select freshwater aquaculture regions</figcaption></figure>
+      <figure class="pic a zoom" style="--i:3"><img src="assets/img/present/survey-2.png" alt="Farmers and documents"><span class="badge">2</span><figcaption><b>Primary &amp; Secondary Data</b>Farmers, reports and published sources</figcaption></figure>
+      <figure class="pic a zoom" style="--i:4"><img src="assets/img/present/survey-3.png" alt="Interview with a farmer"><span class="badge">3</span><figcaption><b>Questionnaire Survey</b>Interview carp farmers</figcaption></figure>
+      <figure class="pic a zoom" style="--i:5"><img src="assets/img/present/survey-4.png" alt="Community group discussion"><span class="badge">4</span><figcaption><b>Participatory Rural Appraisal</b>Collect community-based insights</figcaption></figure>
+      <figure class="pic a zoom" style="--i:6"><img src="assets/img/present/survey-5.png" alt="Organised records"><span class="badge">5</span><figcaption><b>Data Management</b>Organize and validate survey records</figcaption></figure>
+      <figure class="pic a zoom" style="--i:7"><img src="assets/img/present/survey-6.png" alt="Charts of results"><span class="badge">6</span><figcaption><b>Data Analysis</b>Interpret findings and patterns</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ===== 8 · Activity 2 lab pipeline ===== -->
+  <section class="slide" data-title="Activity 2">
+    <div class="sh"><span class="kick a" style="--i:0">Activity 2</span><h2 class="a sm" style="--i:1">Isolation and identification of the infectious pathogens in IMCs</h2></div>
+    <div class="flow" data-flow="lab"></div>
+    <div class="legend a" style="--i:14">
+      <h4>Workflow lanes</h4>
+      <p><i class="k-field"></i>Field &amp; sampling</p>
+      <p><i class="k-culture"></i>Culture &amp; phenotype</p>
+      <p><i class="k-mol"></i>Molecular analysis</p>
+    </div>
+    <div class="lab-photos">
+      <figure class="ph a right" style="--i:4"><img src="assets/img/biochem-tubes.jpg" alt="Biochemical test tubes"><figcaption>Biochemical tests</figcaption></figure>
+      <figure class="ph a right" style="--i:6"><img src="assets/img/present/streak-plate.jpg" alt="Streaked bacterial colonies on an agar plate"><figcaption>Pure culture</figcaption></figure>
+      <figure class="ph a right" style="--i:8"><img src="assets/img/ast-plate.jpg" alt="Antibiotic susceptibility plate"><figcaption>Antibiotic susceptibility</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ===== 9 · Work schedule ===== -->
+  <section class="slide" data-title="Work Schedule">
+    <div class="sh"><span class="kick a" style="--i:0">Timeline · July 2026 – June 2027</span><h2 class="a" style="--i:1">Work Schedule (2026 - 2027)</h2></div>
+    <div class="gantt a" style="--i:2">
+      <div class="g-head">
+        <div class="g-lab"><span>YEAR</span><b>2026-27</b></div>
+        <div class="g-years"><span>2026</span><span>2027</span></div>
+      </div>
+      <div class="g-row g-months">
+        <div class="g-lab"><b>Project activities</b></div>
+        <div class="g-track"><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span></div>
+      </div>
+      <div class="g-row"><div class="g-lab"><i>1</i>A cross-sectional study in selected freshwater aquaculture regions of Bangladesh</div><div class="g-track"><span class="bar s1" style="--f:0;--t:8;--i:3">Jul – Mar</span></div></div>
+      <div class="g-row"><div class="g-lab"><i>2</i>Sampling of fish from disease affected farms and bacteria isolations</div><div class="g-track"><span class="bar s2" style="--f:0;--t:8;--i:4">Jul – Mar</span></div></div>
+      <div class="g-row"><div class="g-lab"><i>3</i>Biochemical tests of the isolated pathogens</div><div class="g-track"><span class="bar s3" style="--f:4;--t:9;--i:5">Nov – Apr</span></div></div>
+      <div class="g-row"><div class="g-lab"><i>4</i>PCR</div><div class="g-track"><span class="bar s4" style="--f:5;--t:8;--i:6">Dec – Mar</span></div></div>
+      <div class="g-row"><div class="g-lab"><i>5</i>Data analysis &amp; draft writing</div><div class="g-track"><span class="bar s5" style="--f:10;--t:11;--i:7">May – Jun</span></div></div>
+    </div>
+  </section>
+
+  <!-- ===== 10 · Thank you ===== -->
+  <section class="slide thanks" data-title="Thank You">
+    <div class="ty-wrap">
+      <div class="ty-rings a zoom" style="--i:0"><i></i><i></i><i></i></div>
+      <h2 class="ty" aria-label="Thank you" id="tyWord">THANK YOU</h2>
+      <p class="ty-sub a" style="--i:8">Questions &amp; discussion are welcome</p>
+    </div>
+  </section>
+
+  <div class="pfoot"><span class="pf-num" id="pfNum">01 / 10</span></div>
+  <div class="pbar"><i id="pbar"></i></div>
+</div>
+</div>
+
+<!-- ===== Controls (outside the scaled stage) ===== -->
+<nav class="ctrl" id="ctrl" aria-label="Presentation controls">
+  <a class="cb" href="index.html" title="Back to CarpQuest (Esc twice)" aria-label="Back to the website"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></a>
+  <button class="cb" id="prevBtn" title="Previous (←)" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="dots" id="dots"></div>
+  <button class="cb" id="nextBtn" title="Next (→)" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button class="cb" id="fsBtn" title="Full screen (F)" aria-label="Toggle full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</nav>
+<div class="hint" id="hint">Use <kbd>←</kbd> <kbd>→</kbd>, click, scroll or swipe · <kbd>F</kbd> full screen</div>
+
+<script src="js/present.js"></script>
+</body>
+</html>

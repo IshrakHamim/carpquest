@@ -23,6 +23,16 @@ An interactive, gamified study companion for the research proposal
 | Quiz arena | all | Topic rounds and a 15-question *Boss Battle* with 3 lives |
 | Library | 10 | 18 curated YouTube videos, 48 reference articles, glossary, printable certificate |
 
+## Presentation
+
+`presentation.html` is a Canva-style slide deck of the same 10 slides, linked from the **▶ Presentation** button in the header.
+
+- **Next:** → ↓ Space PageDown, left click, scroll down, swipe left
+- **Previous:** ← ↑ PageUp, right click, scroll up, swipe right
+- **Jump:** Home / End, number keys 1–9 (0 = slide 10), or the dots in the control bar
+- **Full screen:** F or the ⛶ button
+- Each slide has its own URL (`presentation.html#5`). To add researcher names to the cover, fill in the `<ul>` under "Researcher(s)" in `presentation.html`.
+
 Gamification: XP, 7 levels (Fish Egg → Master Pathologist), 19 badges, confetti, and progress saved in the browser (`localStorage`).
 
 ## Tech
@@ -31,6 +41,7 @@ Plain HTML, CSS and JavaScript with no build step. [D3 v7](https://d3js.org/) is
 
 ```
 index.html
+presentation.html ← slide-deck view (css/present.css, js/present.js)
 css/style.css
 js/data.js      ← all content (edit facts, quizzes, flashcards here)
 js/game.js      ← XP / levels / badges / persistence
@@ -39,6 +50,7 @@ js/lab.js       ← lab & molecular simulators
 js/learn.js     ← knowledge graph, flashcards, quiz, library
 js/main.js      ← bootstrap & navigation
 assets/img/     ← photos from the slide deck (web-optimised)
+assets/img/present/ ← logo, survey illustrations and extra photos for the slides
 ```
 
 Run locally with `python3 -m http.server`, then open http://localhost:8000.

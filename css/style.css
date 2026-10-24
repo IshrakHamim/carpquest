@@ -122,7 +122,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .xp-num { font: 500 .82rem var(--font-m); white-space: nowrap; }
 .xp-num b { color: var(--gold); }
 .hud-actions { display: flex; gap: 6px; }
-@media (max-width: 560px) { .brand span:last-child { display: none; } .xp-num { display: none; } .hud { gap: 8px; } }
+.present-btn { gap: 6px; background: var(--primary); color: var(--on-primary); text-decoration: none; font-size: .9rem; }
+.present-btn b { font-weight: 600; }
+.present-btn:hover { background: var(--primary-2); }
+.drawer-present { display: block; margin-top: 14px; text-align: center; text-decoration: none; }
+@media (max-width: 560px) { .brand span:last-child { display: none; } .xp-num { display: none; } .present-btn b { display: none; } .hud { gap: 8px; } }
 .hud.pulse .xpbar i { box-shadow: 0 0 12px var(--gold); }
 
 /* drawer */
